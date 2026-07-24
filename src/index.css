@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+.bg-admin-edited { background-image: repeating-linear-gradient(45deg, rgba(168, 85, 247, 0.35), rgba(168, 85, 247, 0.35) 4px, transparent 4px, transparent 8px); }

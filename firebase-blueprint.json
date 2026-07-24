@@ -1,0 +1,16 @@
+{
+  "entities": {
+    "submission": {
+      "title": "Submission",
+      "description": "A submission for the form",
+      "type": "object",
+      "properties": {}
+    }
+  },
+  "firestore": {
+    "submissions": {
+      "schema": "submission",
+      "description": "Submissions"
+    }
+  }
+}

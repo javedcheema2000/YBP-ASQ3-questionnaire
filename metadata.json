@@ -1,0 +1,6 @@
+{
+  "name": "ASQ-3 Digital Form",
+  "description": "A digital version of the ASQ-3 questionnaires for 2, 6, 12, and 18 months, with printable outputs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
