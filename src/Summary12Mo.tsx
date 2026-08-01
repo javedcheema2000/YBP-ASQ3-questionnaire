@@ -78,7 +78,7 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
     const isAnsEdited = (answers[qId] || '') !== (orig[qId] || '');
     
     if (isAnsEdited) {
-      return 'border-2 border-purple-500 bg-purple-50 text-purple-700 font-bold rounded';
+      return isAbnormalVal ? 'border-2 border-red-500 bg-red-50 text-red-600 font-bold rounded bg-admin-edited' : 'border-2 border-slate-600 bg-slate-100 text-slate-800 rounded font-semibold bg-admin-edited';
     }
     
     if (isAbnormalVal) {
@@ -93,7 +93,7 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
     const isAnsEdited = (answers[qId] || '') !== (orig[qId] || '');
     
     if (isAnsEdited) {
-      return 'bg-purple-50 border border-purple-200 text-purple-700 pl-5 text-xs print:text-[10px] whitespace-pre-wrap break-words mt-1 rounded p-1.5';
+      return isAbnormalVal ? 'bg-red-50 border border-red-200 text-red-700 pl-5 text-xs print:text-[10px] whitespace-pre-wrap break-words mt-1 rounded p-1.5 bg-admin-edited' : 'text-[#2563EB] bg-slate-50 border border-slate-100 pl-5 text-xs print:text-[10px] whitespace-pre-wrap break-words mt-1 rounded p-1.5 bg-admin-edited';
     }
     
     if (isAbnormalVal) {
@@ -180,14 +180,15 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
                 {(() => {
                   const isBlack = row.score <= row.black;
                   const isGray = row.score > row.black && row.score <= row.gray;
-                  const baseBg = isBlack ? 'bg-[#FECACA]' : isGray ? 'bg-[#FED7AA]' : 'bg-[#D1FAE5]';
+                  const baseBg = isBlack ? 'bg-[#FECACA]' : isGray ? 'bg-[#FEF08A]' : 'bg-[#D1FAE5]';
+                  const baseText = isBlack 
+                    ? 'text-[#7F1D1D] font-extrabold border-black'
+                    : isGray
+                      ? 'text-[#713F12] font-extrabold border-black'
+                      : 'text-[#064E3B] font-extrabold border-black';
                   const textClass = isSectionEdited(row.key)
-                    ? '!text-purple-900 font-black border-[2px] border-purple-600 bg-admin-edited'
-                    : isBlack 
-                      ? 'text-[#7F1D1D] font-extrabold border-black'
-                      : isGray
-                        ? 'text-[#78350F] font-extrabold border-black'
-                        : 'text-[#064E3B] font-extrabold border-black';
+                    ? `${baseText} font-black bg-admin-edited`
+                    : baseText;
                   return (
                     <td className={`border p-1 print:p-[2px] text-center ${baseBg} ${textClass}`}>{row.score}</td>
                   );
@@ -197,7 +198,7 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
                     {[0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60].map(val => {
                       const isBlack = val <= row.black;
                       const isGray = val > row.black && val <= row.gray;
-                      const bg = isBlack ? 'bg-[#FECACA]' : isGray ? 'bg-[#FED7AA]' : 'bg-[#D1FAE5]';
+                      const bg = isBlack ? 'bg-[#FECACA]' : isGray ? 'bg-[#FEF08A]' : 'bg-[#D1FAE5]';
                       
                       const closestScore = Math.round(row.score / 5) * 5;
                       const isFilled = closestScore === val;
@@ -206,7 +207,7 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
                         <div key={val} className={`flex-1 flex items-center justify-center ${bg} border-l border-white/20`}>
                           <div className={`w-3.5 h-3.5 rounded-full border border-black flex items-center justify-center bg-white ${isFilled ? 'border-[3px]' : ''}`}>
                             {isFilled && (
-                              <div className={`w-1.5 h-1.5 rounded-full ${isSectionEdited(row.key) ? 'bg-purple-600' : 'bg-black'}`} />
+                              <div className={`w-1.5 h-1.5 rounded-full ${'bg-black'}`} />
                             )}
                           </div>
                         </div>
@@ -378,7 +379,7 @@ export function Summary12Mo({ submission, onSectionClick }: { submission: Submis
           </div>
           <div className="flex items-center gap-2">
             <span>If the baby's total score is in the</span>
-            <div className="w-6 h-3 border border-black bg-[#FED7AA]"></div>
+            <div className="w-6 h-3 border border-black bg-[#FEF08A]"></div>
             <span>area, it is close to the cutoff. Provide learning activities and monitor.</span>
           </div>
           <div className="flex items-center gap-2">

@@ -485,10 +485,10 @@ function RecordsView({ onView }: { onView: (state: { submission: Submission }) =
                       const bgBase = s.status === 'normal' 
                         ? 'bg-[#D1FAE5] text-[#064E3B]' 
                         : s.status === 'borderline' 
-                          ? 'bg-[#FED7AA] text-[#78350F]' 
+                          ? 'bg-[#FEF08A] text-[#713F12]' 
                           : 'bg-[#FECACA] text-[#7F1D1D]';
                       const bg = edited 
-                        ? `${bgBase} bg-admin-edited border-[2px] border-purple-600 !text-purple-900 font-black shadow-sm`
+                        ? `${bgBase} bg-admin-edited border-[2px] border-transparent font-black shadow-sm`
                         : `${bgBase} border-[2px] border-transparent`;
                       return (
                         <td key={key} className={`px-2 py-4 text-xs font-bold text-center ${bg}`} title={`${s.label}: ${s.score} (Cutoff: ${s.cutoff}, Black: ${s.black}, Gray: ${s.gray})`}>

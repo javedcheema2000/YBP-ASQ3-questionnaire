@@ -355,7 +355,7 @@ export function PatientForm() {
           <button
             type="submit"
             form="questionnaire-form"
-            className={`px-6 py-2 font-bold text-sm rounded-md transition-colors shadow-sm text-white ${showErrors && answeredQuestions < totalQuestions ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+            className={`px-6 py-2 font-bold text-sm rounded-md transition-colors shadow-sm text-white ${showErrors && (answeredQuestions < totalQuestions || missingExplanations.length > 0) ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'}`}
           >
             Submit
           </button>
@@ -645,7 +645,7 @@ export function PatientForm() {
             <button
               type="submit"
               form="questionnaire-form"
-              className={`px-8 py-3 font-bold text-base rounded-md transition-colors shadow-sm text-white ${showErrors && answeredQuestions < totalQuestions ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+              className={`px-8 py-3 font-bold text-base rounded-md transition-colors shadow-sm text-white ${showErrors && (answeredQuestions < totalQuestions || missingExplanations.length > 0) ? 'bg-red-600 hover:bg-red-700' : 'bg-blue-600 hover:bg-blue-700'}`}
             >
               Submit Questionnaire
             </button>
